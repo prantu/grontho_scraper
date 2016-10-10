@@ -47,8 +47,9 @@ class FeatureExtractor(object):
                     if val:
                         retval = val
                         break
-        retval = float(retval)
-        return retval / 1024 if filter_ and retval >= 128 else retval
+        if retval is not None:
+            retval = float(retval)
+            return retval / 1024 if filter_ and retval >= 128 else retval
 
     def __score_os__(self, os_string):
         os_string = os_string.lower()
